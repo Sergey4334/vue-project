@@ -1,20 +1,19 @@
 /* eslint-disable vue/valid-template-root */
 <template>
   <div id="app">
-    <h1>{{first}}</h1>
-    <h2>{{od.age}}</h2>
-    <a v-bind:href="lik">Link</a>
-    <a :[attrKey]="lik">Link</a>
-    <template v-if="msgIsVisile === 1">
-    <div class="msg">some msg!</div>
-    </template>
-    <template v-else-if="msgIsVisile === 2">
-      <div class="msg">else if msg!</div>
-    </template>
-    <template v-else>
-      <div class="msg">regrat msg!</div>
-    </template>
-    <div v-show="isVisileShow">W show text</div>
+    <h1  class="title">Hello World</h1>
+    <HelloWorld :title="title" @ochacheCouter="oCouterComp"/>
+    <input type="text" v-model="text"/>
+    <h3>I text value: <i>{{text}}</i></h3>
+    <div class="check">
+      <input type="checkbox" v-model="check" />
+      <h3>I text checkbox value: <i>{{check}}</i></h3>
+
+      <input type="checkbox" v-model="checkArr" value="o" />
+      <input type="checkbox" v-model="checkArr" value="two" />
+      <input type="checkbox" v-model="checkArr" value="three" />
+      <h3>I text checkbox value: <i>{{checkArr}}</i></h3>
+    </div>
   </div>
 </template>
 
@@ -28,15 +27,16 @@ export default {
     HelloWorld,
   },
   data: () => ({
-    first: 'Serhii',
-    od: {
-      age: 20,
-    },
-    lik: 'http://google.com',
-    attrKey: 'href',
-    msgIsVisile: 2,
-    isVisileShow: true,
+    title: 'Some title',
+    text: '',
+    check: false,
+    checkArr: [],
   }),
+  methods: {
+    oCouterComp(value) {
+      console.log('click App.vue:', value);
+    },
+  },
 };
 </script>
 
